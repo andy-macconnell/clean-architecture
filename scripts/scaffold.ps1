@@ -1,5 +1,5 @@
-mkdir ..\test
-Set-Location ..\test
+mkdir ..\src
+Set-Location ..\src
 
 dotnet new classlib -n Domain -o .\Domain
 
@@ -10,9 +10,11 @@ dotnet add .\Application package Microsoft.Extensions.DependencyInjection.Abstra
 
 dotnet new classlib -n Infrastructure -o .\Infrastructure
 dotnet add .\Infrastructure reference .\Application
+dotnet add .\Application package Microsoft.Extensions.DependencyInjection.Abstractions
 
 dotnet new classlib -n Persistence -o .\Persistence
 dotnet add .\Persistence reference .\Application
+dotnet add .\Application package Microsoft.Extensions.DependencyInjection.Abstractions
 
 dotnet new webapi -n Api -o .\Api
 dotnet add .\Api reference .\Application
